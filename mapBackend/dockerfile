@@ -1,0 +1,21 @@
+# Use an existing Node.js image as the base image
+FROM node:18.13.0
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the package.json and package-lock.json files to the container
+COPY package*.json ./
+
+# Install the project's dependencies
+RUN npm install
+
+# Copy the rest of the source code to the container
+COPY . .
+
+# Expose port 3000 for the application
+EXPOSE 3000
+
+# Specify the command to run when the container starts
+CMD ["node", "index.js"]
+
