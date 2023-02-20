@@ -1,12 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import 'react-native-gesture-handler';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import {NavigationContainer} from '@react-navigation/native'
+import Feed from './src/pages/Feed';
+import Article from './src/pages/Article';
+import Map from './src/pages/Map';
 
+const Drawer = createDrawerNavigator();
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+
+      <Drawer.Navigator initialRouteName='Map'>
+        <Drawer.Screen name="Feed" component={Feed} />
+        <Drawer.Screen name="Map" component={Map} />
+        <Drawer.Screen name="Article" component={Article} />
+      </Drawer.Navigator>
+
+    </NavigationContainer>
   );
 }
 
